@@ -5,14 +5,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include  "hlq_utils_ChangeUtils.h"
-
 #include <jni.h>
-
 #include <android/log.h>
-
 #define LOGI(FORMAT, ...) __android_log_print(ANDROID_LOG_INFO,"zph",FORMAT,##__VA_ARGS__);
 #define LOGE(FORMAT, ...) __android_log_print(ANDROID_LOG_ERROR,"zph",FORMAT,##__VA_ARGS__);
-
 #define MODE_NORMAL 0
 #define MODE_LUOLI 1
 #define MODE_DASHU 2
@@ -21,7 +17,7 @@
 #define MODE_KONGLING 5
 using namespace FMOD;
 
-JNIEXPORT void JNICALL Java_com_handsome_ndkvoice_Utils_fix(JNIEnv *env,
+JNIEXPORT void JNICALL Java_hlq_utils_ChangeUtils_change(JNIEnv *env,
                                                             jclass jcls, jstring path_jstr,
                                                             jint type) {
     //声音引擎
@@ -92,15 +88,13 @@ JNIEXPORT void JNICALL Java_com_handsome_ndkvoice_Utils_fix(JNIEnv *env,
     }
     system->update();
 
-//单位是微妙
-//每秒钟判断下是否是播放
+
     while (playing) {
         channel->isPlaying(&playing);
         usleep(1000);
     }
     goto end;
 
-//释放资源
     end:
     env->ReleaseStringUTFChars(path_jstr, path_cstr);
     sound->release();

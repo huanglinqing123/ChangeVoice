@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ExecutorService fixedThreadPool;
     private PlayerThread playerThread;
-    private String path = "file:///android_asset/hensen.mp3";
+    private String path = "file:///android_asset/gwlzhf.mp3";
     private int type;
 
     private Button zhengchang,dashu,jingsong,kongling,gaoguao,luoli;
@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gaoguao = findViewById(R.id.gaoguai);
         luoli = findViewById(R.id.luoli);
         fixedThreadPool = Executors.newFixedThreadPool(1);
+
+        zhengchang.setOnClickListener(this);
+        dashu.setOnClickListener(this);
+        jingsong.setOnClickListener(this);
+        kongling.setOnClickListener(this);
+        gaoguao.setOnClickListener(this);
+        luoli.setOnClickListener(this);
         FMOD.init(this);
     }
 
